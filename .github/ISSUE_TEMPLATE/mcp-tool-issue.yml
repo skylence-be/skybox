@@ -1,0 +1,65 @@
+name: MCP Tool Issue
+description: Problem with a specific skybox MCP tool (wrong result, unexpected error, protocol issue)
+title: "[mcp]: "
+labels: ["bug", "mcp", "pending triage"]
+body:
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool
+      description: Which MCP tool misbehaved?
+      options:
+        - query
+        - context
+        - impact
+        - cypher
+        - backlinks
+        - block_span
+        - detect_changes
+        - index_repo
+        - wait_for_job
+        - job_status
+        - list_jobs
+        - cancel_job / cancel_all_jobs / purge_jobs
+        - list_repos / register_repos / unregister_repos / purge_repos
+        - repo_status
+        - rename
+        - route_map
+        - api_impact
+        - shape_check
+        - tool_map
+        - snapshot_get
+        - group_* (create/add/sync/impact/...)
+        - gateway_* (auth/ACL/tokens)
+        - skybox_guide / resources
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The exact call (tool + arguments), what came back, and what you expected instead. Redact anything private.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: skybox version
+      description: Output of `skybox --version`
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / error output
+      description: Relevant daemon or client output, if any.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I have read the [Code of Conduct](https://github.com/skylence-be/.github/blob/main/CODE_OF_CONDUCT.md)
+          required: true
+        - label: I searched existing issues and this is not a duplicate
+          required: true
